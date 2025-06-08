@@ -26,6 +26,11 @@ const blogPost = {
   title: "The Future of Digital Composition: How AI is Revolutionizing Creative Workflows",
   excerpt:
     "Exploring how AI and machine learning are revolutionizing the way we create and compose digital content in the modern era.",
+  heroImage: {
+    url: "/placeholder.svg?height=600&width=1200",
+    alt: "Futuristic AI interface with glowing neural networks and digital art creation tools",
+    caption: "AI-powered creative tools are transforming how we approach digital composition",
+  },
   content: `
     <h2>Introduction</h2>
     <p>The landscape of digital composition is undergoing a fundamental transformation. As artificial intelligence and machine learning technologies mature, they're not just changing how we work—they're redefining what's possible in creative expression.</p>
@@ -351,6 +356,33 @@ export default function BlogPostPage() {
                 </Button>
               </div>
             </header>
+
+            {/* Hero Image Section */}
+            <div className="mb-12">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur opacity-50 group-hover:opacity-75 transition duration-500" />
+                <div className="relative overflow-hidden rounded-2xl border border-purple-900/30 bg-gray-900/20 backdrop-blur-sm">
+                  <div className="aspect-video relative">
+                    <img
+                      src={blogPost.heroImage.url || "/placeholder.svg"}
+                      alt={blogPost.heroImage.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ filter: "brightness(0.9) contrast(1.1)" }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                    {/* Image overlay with glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {blogPost.heroImage.caption && (
+                    <div className="p-4 bg-gray-900/60 backdrop-blur-sm border-t border-purple-900/20">
+                      <p className="text-sm text-gray-400 italic text-center">{blogPost.heroImage.caption}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
 
             {/* Article Content */}
             <div

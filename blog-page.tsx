@@ -139,7 +139,10 @@ export default function BlogPage() {
           {/* Featured Post */}
           {featuredPost && selectedCategory === "All" && !searchTerm && (
             <section className="mb-16">
-              <div className="relative group">
+              <div
+                className="relative group cursor-pointer"
+                onClick={() => (window.location.href = `/blog/${featuredPost.id}`)}
+              >
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300" />
                 <div className="relative bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 border border-purple-900/30">
                   <div className="flex items-center gap-2 mb-4">
@@ -172,7 +175,13 @@ export default function BlogPage() {
                       <span>by {featuredPost.author}</span>
                     </div>
 
-                    <Button className="bg-purple-600 hover:bg-purple-700 group/btn">
+                    <Button
+                      className="bg-purple-600 hover:bg-purple-700 group/btn"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        window.location.href = `/blog/${featuredPost.id}`
+                      }}
+                    >
                       Read More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
@@ -186,7 +195,11 @@ export default function BlogPage() {
           <section>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {regularPosts.map((post) => (
-                <article key={post.id} className="group cursor-pointer">
+                <article
+                  key={post.id}
+                  className="group cursor-pointer"
+                  onClick={() => (window.location.href = `/blog/${post.id}`)}
+                >
                   <div className="relative">
                     <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
                     <div className="relative bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-800 group-hover:border-purple-900/50 transition-all duration-300 h-full">
